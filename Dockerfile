@@ -30,7 +30,7 @@ COPY . .
 RUN composer install --no-dev --prefer-dist
 
 # Change current user to www-data
-USER partir 
+USER www-data
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000

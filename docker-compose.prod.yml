@@ -6,6 +6,7 @@ services:
     container_name: php-fpm
     volumes:
       - ./:/var/www/partir
+    user: "${UID}:${GID}"
     ports:
       - "8000:8000"
     networks:

@@ -3,6 +3,8 @@ FROM php:8.3-fpm
 # Set working directory
 WORKDIR /var/www/partir
 
+RUN mkdir -p vendor && chown -R www-data:www-data .
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -33,5 +35,5 @@ RUN composer install --no-dev --prefer-dist
 USER www-data
 
 # Expose port 9000 and start php-fpm server
-EXPOSE 9000
+EXPOSE 8000
 CMD ["php-fpm"]

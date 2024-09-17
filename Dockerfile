@@ -1,7 +1,7 @@
 FROM php:8.3-fpm
 
 # Set working directory
-WORKDIR /var/www/html
+WORKDIR /var/www/partir
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -30,7 +30,7 @@ COPY . .
 RUN composer install --no-dev --prefer-dist
 
 # Change current user to www-data
-USER www-data
+USER partir 
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000

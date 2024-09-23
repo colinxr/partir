@@ -14,15 +14,14 @@ RUN docker-php-ext-install pdo pdo_pgsql
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-
 # Install Node.js and npm
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get install -y nodejs
 
 # Install production dependencies
 WORKDIR /var/www/html
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm install --production
 
 # Set working directory
 WORKDIR /var/www/html
